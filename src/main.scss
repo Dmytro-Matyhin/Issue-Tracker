@@ -1,0 +1,205 @@
+// GENERAL
+
+* {
+  box-sizing: border-box;
+}
+
+*:last-child {
+  margin-bottom: 0;
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+hr {
+  border: 1px solid #a7a7a7;
+}
+p {
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// SECTIONS
+
+.section {
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 30px;
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &-input,
+  &-select {
+    margin: 10px 0;
+    border: 2px solid transparent;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 6px;
+  }
+  
+  &-input:focus,
+  &-select:focus {
+    outline: none;
+  }
+  
+  &-label {
+    padding: 20px 0 10px;
+    font-size: 16px;
+  }
+  &-title {
+    margin-bottom: 10px;
+  }
+  &-info-title {
+    font-size: 16px;
+    margin: 10px 0 15px;
+  }
+  &-info-status {
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #5bc0de;
+    border-radius: 5px;
+    background-color: #5bc0de;
+    color: #ffffff;
+    padding: 5px;
+  }
+  &-info-list {
+    padding-left: 0;
+  }
+  &-info-item {
+    list-style: none;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  &-issueDescription {
+    word-break: break-all;
+    margin-bottom: 0;
+    font-size: 22px;
+  }
+  &-issueData {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+.item-desc {
+  font-size: 22px;
+}
+.dis-none {
+  display: none;
+}
+.wrapper {
+  border: 1px solid #a7a7a7;
+  background-color: #e5e5e5;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 13, 32, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+}
+.select-issues {
+  width: 100%;
+  margin-right: 10px;
+}
+.issue-title {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+// VALIDATION
+
+.invalid {
+  border: 2px solid #D91414;
+}
+.error-message {
+  color: #D91414;
+  display: block;
+}
+
+// BUTTONS 
+
+@mixin button-variant($color, $bg, $border-color, $theme: 'dark') {
+  @if ($theme == 'dark') {
+    color: $color;
+    background-color: $bg;
+    border-color: $border-color;
+    &:hover {
+      background-color: darken($bg, 20%);
+      border-color: darken($border-color, 20%);
+    }
+  } @else if ($theme == 'light') {
+    color: $color;
+    background-color: $bg;
+    border-color: $border-color;
+    &:hover {
+      color: lighten($color, 20%);
+      background-color: lighten($bg, 20%);
+      border-color: lighten($border-color, 20%);
+    }
+  }
+} 
+
+.button {
+  margin-top: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: inherit;
+  font-family: inherit;
+  padding: 8px 16px;
+  font-weight: 400;
+  text-transform: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  color: #fff;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+  }
+
+  &-primary {
+    @include button-variant(#ffffff, #007bff, #007bff, 'dark');
+  }
+  &-close {
+    @include button-variant(#ffffff, #f0ad4e, #eea236, 'dark');
+    margin: 10px 10px 10px 0;
+  }
+  &-delete {
+    @include button-variant(#ffffff, #d9534f, #d43f3a, 'dark');
+    margin: 10px 10px 10px 0;
+  }
+  &-primary:disabled {
+    background-color: #004a99;
+    cursor: not-allowed;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Tracker</title>
+</head>
+<body>
+  <div class="container">
+    <section class="section section-form" id="section-form">
+      <h1 class="section-title">Add New Issue:</h1>
+      <form class="section-form" id="form">
+        <label class="section-label" for="description">Description</label>
+        <input type="text" class="section-input" id="description" placeholder="Describe the issue...">
+        <label class="section-label">Severity</label>
+        <select class="section-select" id="select">
+          <option>Low</option>
+          <option selected>Medium</option>
+          <option>High</option>
+        </select>
+        <label class="section-label">Assigned To</label>
+        <select class="section-select" id="users-list"></select>
+        <div class="buttons">
+          <button class="button button-primary" type="submit" id="button">Add</button>
+        </div>
+      </form>
+    </section>
+    <section class="section section-issue-list">
+      <h2 class="issue-title">Close or Delete Issue</h2>
+      <div class="buttons" id="issue-buttons">
+        <select class="section-select select-issues" id="issue-list"></select>
+        <button class="button button-close" id="close">Close</button>
+        <button class="button button-delete" id="delete">Delete</button> 
+      </div>
+    </section>
+    <section id="section-info">
+    </section>
+</body>
+</html>
