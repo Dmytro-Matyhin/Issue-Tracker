@@ -18,9 +18,8 @@ router.get('/', function(req, res, next) {
     });
   }
 
-  let status = 'Open';
-  let issuesId = shortid.generate();
-  db.get('issues').push({...req.body, issuesId, status}).write();
+  let id = shortid.generate();
+  db.get('issues').push({...req.body, id}).write();
 
   res.status(200).json({
     status: 'success',
@@ -28,8 +27,16 @@ router.get('/', function(req, res, next) {
   });
 
 }).delete('/:id', function(req, res, next) {
+
+  if (!req.body) {
+    return res.status(400).json({
+      status: 'error',
+      error: 'req body cannot be empty',
+    });
+  }
+
   let id = req.params.id;
-  db.get('issues').remove({issuesId: id}).write();
+  db.get('issues').remove({id: id}).write();
 
   res.status(200).json({
     status: 'success',
@@ -37,9 +44,16 @@ router.get('/', function(req, res, next) {
   })
 
 }).put('/:id', function(req, res, next) {
-  let id = req.params.id;
   
-  db.get('issues').find({issuesId: id}).assign(req.body).write();
+  if (!req.body) {
+    return res.status(400).json({
+      status: 'error',
+      error: 'req body cannot be empty',
+    });
+  }
+
+  let id = req.params.id;
+  db.get('issues').find({id: id}).assign(req.body).write();
 
   res.status(200).json({
     status: 'success',

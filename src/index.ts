@@ -1,25 +1,22 @@
 import './main.scss';
-import IssueTrackerApi from './components/issue-tracker-api.class';
-import Users from './components/user.class';
 import validateForm from './validation/validation.class';
-import IssueClass from './components/issue.class';
+import DataTransformation from './components/data-transformation.class';
 
 let form: HTMLFormElement = document.querySelector('#form');
 let btn: HTMLButtonElement = document.querySelector('#button');
+
+btn.addEventListener('click', (event) => {
+  event.preventDefault();
+  DataTransformation.createDataObject();
+  validateForm.btn.setAttribute('disabled', 'disabled');
+  form.reset();
+  DataTransformation.showIssue();
+})
 
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   validateForm.btn.setAttribute('disabled', 'disabled');
-  Users.createUsersList();
+  DataTransformation.createUsersList();
   validateForm.validateInputLength();
 }
-
-btn.addEventListener('click', (event) => {
-  event.preventDefault();
-  IssueTrackerApi.createDataObject();
-  validateForm.btn.setAttribute('disabled', 'disabled');
-  form.reset();
-  IssueClass.showIssue();
-  IssueClass.createIssueList();
-})

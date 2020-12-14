@@ -1,11 +1,13 @@
-import {User} from '../modules/user.interface';
+import {EnviromentUrls} from '../utils/enviroment';
 
-export default class Users implements User {
-  static baseUrl: string = 'users';
+export default class Users {
+  static baseUrl: string = EnviromentUrls.baseUrl;
+  static usersPath: string = EnviromentUrls.usersPath;
 
   email: string
   name: string
   password: string
+  usersId?: string; 
   
   constructor(email: string, name: string, password: string) {
     this.email = email;
@@ -14,23 +16,6 @@ export default class Users implements User {
   }
 
   static getUsers() {
-    return fetch(`http://127.0.0.1:3000/${Users.baseUrl}`);
-  }
-
-  static createUsersList() {
-    let select: HTMLSelectElement = document.querySelector('#users-list');
-
-    Users.getUsers()
-    .then(response => response.json())
-    .then(data => data.data)
-    .then(users => {
-      users.forEach((user: User) => {
-        let userId: string = user.usersId;
-        let option: HTMLOptionElement = document.createElement('option');
-        option.setAttribute('id', `${userId}`)
-        option.append(user.name);
-        select.append(option);
-      })
-    })
+    return fetch(`${this.baseUrl}/${this.usersPath}`)
   }
 }

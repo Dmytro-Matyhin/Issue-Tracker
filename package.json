@@ -1,14 +1,14 @@
 {
-  "name": "my-webpack-project",
+  "name": "issue-tracker",
   "version": "1.0.0",
-  "description": "My webpack project",
+  "description": "First issue-tracker",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "dev": "webpack serve"
   },
-  "author": "",
+  "author": "Dmitriy <dima.mattock@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-plugin-syntax-dynamic-import": "^6.18.0",

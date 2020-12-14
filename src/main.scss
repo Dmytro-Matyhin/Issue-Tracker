@@ -3,28 +3,17 @@
 * {
   box-sizing: border-box;
 }
-
 *:last-child {
   margin-bottom: 0;
 }
-
 body {
   margin: 0;
 }
-
 html {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 25px;
-}
-
-ul {
-  margin-bottom: 0;
-}
-
-hr {
-  border: 1px solid #a7a7a7;
 }
 p {
   margin-bottom: 0;
@@ -70,11 +59,24 @@ p {
   &-title {
     margin-bottom: 10px;
   }
-  &-info-title {
+}
+
+.wrapper {
+  border: 1px solid #a7a7a7;
+  background-color: #e5e5e5;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 13, 32, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  &-title {
     font-size: 16px;
     margin: 10px 0 15px;
   }
-  &-info-status {
+  &-status {
     font-size: 14px;
     font-weight: bold;
     border: 1px solid #5bc0de;
@@ -82,14 +84,6 @@ p {
     background-color: #5bc0de;
     color: #ffffff;
     padding: 5px;
-  }
-  &-info-list {
-    padding-left: 0;
-  }
-  &-info-item {
-    list-style: none;
-    margin: 10px 0;
-    font-size: 16px;
   }
   &-issueDescription {
     word-break: break-all;
@@ -100,30 +94,10 @@ p {
     font-size: 16px;
     line-height: 24px;
   }
-}
-.item-desc {
-  font-size: 22px;
-}
-.dis-none {
-  display: none;
-}
-.wrapper {
-  border: 1px solid #a7a7a7;
-  background-color: #e5e5e5;
-  padding: 10px 20px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 13, 32, 0.1);
-  display: flex;
-  flex-direction: column;
-  margin: 30px auto;
-}
-.select-issues {
-  width: 100%;
-  margin-right: 10px;
-}
-.issue-title {
-  font-size: 22px;
-  margin: 10px 0;
+  &-buttons {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 // VALIDATION
@@ -187,19 +161,14 @@ p {
   }
   &-close {
     @include button-variant(#ffffff, #f0ad4e, #eea236, 'dark');
-    margin: 10px 10px 10px 0;
+    margin: 15px 10px 10px 0;
   }
   &-delete {
     @include button-variant(#ffffff, #d9534f, #d43f3a, 'dark');
-    margin: 10px 10px 10px 0;
+    margin: 15px 10px 10px 0;
   }
   &-primary:disabled {
     background-color: #004a99;
     cursor: not-allowed;
   }
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
 }
