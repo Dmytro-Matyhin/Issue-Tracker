@@ -28,7 +28,3 @@ npm run dev
 ```
 npm run start
 ```
-
-## Additional Information
-
-By default, **db.json** file contains a few users. Later I will the add ability to add users to the Database and UI.
