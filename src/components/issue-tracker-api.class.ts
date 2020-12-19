@@ -27,4 +27,14 @@ export default class IssueTrackerApi {
       }
     });
   }
+
+  static updateIssueStatus(id: string, status: string) {
+    return fetch(`${this.baseUrl}/${this.issuePath}/${id}`, {
+      method: 'put',
+      body: JSON.stringify({id, status}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+  }
 }

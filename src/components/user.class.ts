@@ -1,8 +1,4 @@
-import {EnviromentUrls} from '../utils/enviroment';
-
 export default class Users {
-  static baseUrl: string = EnviromentUrls.baseUrl;
-  static usersPath: string = EnviromentUrls.usersPath;
 
   email: string
   name: string
@@ -13,9 +9,5 @@ export default class Users {
     this.email = email;
     this.name = name;
     this.password = password;
-  }
-
-  static getUsers() {
-    return fetch(`${this.baseUrl}/${this.usersPath}`)
   }
 }
