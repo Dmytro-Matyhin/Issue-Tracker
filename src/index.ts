@@ -1,22 +1,25 @@
 import './main.scss';
 import validateForm from './validation/validation.class';
-import DataTransformation from './components/data-transformation.class';
+import IssueService from './components/issue-service.class';
+import UsersService from './components/users-service.class';
+import renderIssue from './utils/render-issue.function';
 
 let form: HTMLFormElement = document.querySelector('#form');
 let btn: HTMLButtonElement = document.querySelector('#button');
-
-btn.addEventListener('click', (event) => {
-  event.preventDefault();
-  DataTransformation.createDataObject();
-  validateForm.btn.setAttribute('disabled', 'disabled');
-  form.reset();
-  DataTransformation.showIssue();
-})
 
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   validateForm.btn.setAttribute('disabled', 'disabled');
-  DataTransformation.createUsersList();
-  validateForm.validateInputLength();
+  UsersService.createUsersList();
+  validateForm.validateInputLength()
+  renderIssue();
 }
+
+btn.addEventListener('click', (event) => {
+  event.preventDefault();
+  IssueService.sendIssueToDatabase();
+  validateForm.btn.setAttribute('disabled', 'disabled');
+  form.reset();
+  IssueService.showIssue();
+})
