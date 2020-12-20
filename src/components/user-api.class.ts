@@ -1,9 +1,9 @@
-import {EnviromentUrls} from '../utils/enviroment';
+import {EnvironmentUrls} from '../utils/enviroment';
 import User from './user.class';
 
 export default class UserApi {
-  static baseUrl: string = EnviromentUrls.baseUrl;
-  static usersPath: string = EnviromentUrls.usersPath;
+  static baseUrl: string = EnvironmentUrls.baseUrl;
+  static usersPath: string = EnvironmentUrls.usersPath;
   
   constructor() {}
 

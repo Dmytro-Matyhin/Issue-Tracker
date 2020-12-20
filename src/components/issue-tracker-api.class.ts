@@ -1,9 +1,9 @@
 import Issue from './issue.class';
-import {EnviromentUrls} from '../utils/enviroment';
+import {EnvironmentUrls} from '../utils/enviroment';
 
 export default class IssueTrackerApi {
-  static baseUrl: string =  EnviromentUrls.baseUrl;
-  static issuePath: string = EnviromentUrls.issuespath;
+  static baseUrl: string =  EnvironmentUrls.baseUrl;
+  static issuePath: string = EnvironmentUrls.issuespath;
 
   static getIssues() {
     return fetch(`${this.baseUrl}/${this.issuePath}`);

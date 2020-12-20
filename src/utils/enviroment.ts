@@ -1,6 +1,6 @@
-import {Enviroment} from '../modules/enviropment';
+import {Environment} from '../modules/environment';
 
-export const EnviromentUrls: Enviroment = {
+export const EnvironmentUrls: Environment = {
   baseUrl: 'http://127.0.0.1:3000',
   usersPath: 'users',
   issuespath: 'issues',
