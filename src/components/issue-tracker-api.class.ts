@@ -1,5 +1,5 @@
 import Issue from './issue.class';
-import {EnvironmentUrls} from '../utils/enviroment';
+import {EnvironmentUrls} from '../utils/environment';
 
 export default class IssueTrackerApi {
   static baseUrl: string =  EnvironmentUrls.baseUrl;

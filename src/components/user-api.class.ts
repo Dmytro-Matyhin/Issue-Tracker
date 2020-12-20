@@ -1,4 +1,4 @@
-import {EnvironmentUrls} from '../utils/enviroment';
+import {EnvironmentUrls} from '../utils/environment';
 import User from './user.class';
 
 export default class UserApi {
