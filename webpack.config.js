@@ -4,9 +4,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const clientRoot = path.resolve(__dirname, './src/client')
+
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: path.join(clientRoot, 'index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'), 
     filename: "main.js",
@@ -16,7 +18,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({ filename:'[name].css' }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/index.html')
+      template: path.join(clientRoot, 'index.html')
     })
   ],
 
@@ -24,7 +26,7 @@ module.exports = {
     rules: [{
       test: /\.(ts|tsx)$/,
       loader: 'ts-loader',
-      include: [path.resolve(__dirname, 'src')],
+      include: [clientRoot],
       exclude: [/node_modules/]
     }, {
       test: /.(scss|css)$/,

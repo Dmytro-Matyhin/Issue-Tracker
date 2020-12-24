@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve",
-    "server": "node server/app"
+    "server": "node src/server/index.js"
   },
   "author": "Dmitriy <dima.mattock@gmail.com>",
   "license": "ISC",

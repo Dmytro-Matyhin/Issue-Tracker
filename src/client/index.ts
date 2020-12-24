@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', init);
 function init() {
   validateForm.btn.setAttribute('disabled', 'disabled');
   UsersService.createUsersList();
-  validateForm.validateInputLength()
+  validateForm.validateInputLength();
   renderIssue();
 }
 
