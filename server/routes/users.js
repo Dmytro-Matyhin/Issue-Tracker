@@ -1,15 +1,23 @@
 const express = require('express');
 const shortid = require('shortid');
 const router = express.Router();
-const db = require('../database/database');
+const db = require('../database');
 
 router.get('/', function(req, res, next) {
   let users = db.get('users');
+
   res.status(200).json({
     status: 'success',
     data: users,
   }); 
 
+}).get('/:id', function(req, res, next) {
+  let user = db.get('users').find({usersId: req.params.id})
+
+  res.status(200).json({
+    status: 'success',
+    data: user
+  }); 
 }).post('/', function(req, res, next) {
   if (!req.body) {
     return res.status(400).json({

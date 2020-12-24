@@ -1,36 +1,31 @@
 const express = require('express');
-const path = require('path');
-const cors = require('cors')
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const connectLivereload = require("connect-livereload");
-const livereload = require("livereload");
-const liveReloadServer = livereload.createServer();
-const publicDirectory = path.join(__dirname, '../src');
-liveReloadServer.watch(publicDirectory);
+const cors = require('cors');
+const http = require('http');
+const config = require('./config');
 
-liveReloadServer.server.once("connection", () => {
-    setTimeout(() => {
-      liveReloadServer.refresh("/");
-    }, 100);
-  });
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const issuesRouter = require('./routes/issues');
-
+const { users: usersRouter, issues: issuesRouter } = require('./routes');
 const app = express();
 
 app.use(cors());
-app.use(connectLivereload());
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(publicDirectory));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/issues', issuesRouter);
 
-module.exports = app;
+
+app.set('port', config.get('port'))
+
+http.createServer(app).listen(app.get('port'), function() {
+  console.log(`Server is listening on port ${config.get('port')}`)
+})
+
+
+app.use(function(err, req, res, next) {
+  if (app.get('env') == 'development') {
+    const errorHandler = app.use(express.errorHandler())
+    errorHandler(err, req, res, next)
+  } else {
+    res.send(500);
+  }
+})

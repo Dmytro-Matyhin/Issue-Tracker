@@ -14,10 +14,9 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
-    new MiniCssExtractPlugin({ filename:'main.[chunkhash].css' }),
+    new MiniCssExtractPlugin({ filename:'[name].css' }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/index.html'),
-      filename: 'index.html'
+      template: path.resolve(__dirname, './src/index.html')
     })
   ],
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const shortid = require('shortid');
 const router = express.Router();
-const db = require('../database/database');
+const db = require('../database');
 
 router.get('/', function(req, res, next) {
   let issues = db.get('issues');

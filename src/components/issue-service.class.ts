@@ -7,7 +7,6 @@ export default class IssueService {
 
   static sendIssueToDatabase() {
     let selectedId: string;
-    let selectedName: string;
     let severity: string = (<HTMLSelectElement>document.querySelector('#select')).value;
     let descriptionValue: string = (<HTMLInputElement>document.querySelector('#description')).value;
     let assignedTo: HTMLSelectElement = document.querySelector('#users-list');
@@ -16,9 +15,9 @@ export default class IssueService {
     for (let key of assignedTo.selectedOptions) {
       if (assignedTo.value) {
         selectedId = key.id;
-        selectedName = assignedTo.value;
-        let issue = new Issue(descriptionValue, severity, selectedId, selectedName, status);
+        let issue = new Issue(descriptionValue, severity, selectedId, status);
         IssueTrackerApi.sendIssue(issue)
+        BrowserStorage.setItem('Issues', issue);
       }
     }
   }
